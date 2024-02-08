@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
+use App\Jobs\ContactUs;
 use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user', [UserController::class, 'show'])->name('user.show');
     Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/user', [UserController::class, 'update'])->name('user.update');
-    // Route::delete('/delete/user', [UserController::class, 'destroy'])->name('user.delete');
+    Route::delete('/user', [UserController::class, 'destroy'])->name('user.delete');
 
     //L'avviso di verifica dell'e-mail
     Route::get('/email/verify', function () {
@@ -55,3 +58,5 @@ Route::middleware(['auth'])->group(function () {
         return back()->with('message', 'Verification link sent!');
     })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 });
+
+Route::post ('/send-mail',[MailController::class,'maildata'])->name('send_mail');

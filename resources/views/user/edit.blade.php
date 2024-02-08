@@ -52,8 +52,8 @@
 
                     <div class="col-md-12">
                         <label for="">Country</label>
-                        <input class="form-control" type="text" name="country" value="{{ old('country', $user->country) }}"
-                            required>
+                        <input class="form-control" type="text" name="country"
+                            value="{{ old('country', $user->country) }}" required>
                     </div>
 
                     <div class="col-md-12">
@@ -64,14 +64,14 @@
 
                     <div class="col-md-12">
                         <label for="">Address</label>
-                        <input class="form-control" type="text" name="address" value="{{ old('address', $user->address) }}"
-                            required>
+                        <input class="form-control" type="text" name="address"
+                            value="{{ old('address', $user->address) }}" required>
                     </div>
 
                     <div class="col-md-12">
                         <label for="">Postal Code</label>
-                        <input class="form-control" type="text" name="postal_code" value="{{ old('postal_code', $user->postal_code) }}"
-                            required>
+                        <input class="form-control" type="text" name="postal_code"
+                            value="{{ old('postal_code', $user->postal_code) }}" required>
                     </div>
 
                     <div class="col-md-12">
@@ -84,6 +84,7 @@
                         <button class="btn btn-primary" type="submit">Aggiorna Profilo</button>
                     </div>
                 </form>
+                
                 <form action="{{ route('user.show') }}" method="GET">
                     @csrf
                     <button type="submit" class="btn">Profilo</button>

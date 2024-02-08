@@ -32,6 +32,11 @@
                     </div>
                 </div>
             </div>
+            <form action="{{ route('user.delete', $user->id) }}" method="post">
+                @method('DELETE')
+                @csrf
+                <input class="btn btn-danger" type="submit" value="delete" />
+            </form>
         </div>
     @endsection
 </body>

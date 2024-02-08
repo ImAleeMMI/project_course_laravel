@@ -28,4 +28,16 @@ class UserController extends Controller
 
         return redirect()->route('user.show')->with('success', 'Aggiornato con successo il profilo utente');
     }
+
+    public function destroy(){
+        $user = Auth::user();
+
+        User::where('id', $user->id)->delete($user);
+
+        return redirect()->route('user.show')->with('success', 'Il tuo profilo è stato cancellato con successo!');
+    }
+
+    public function index(){
+        return view('index');
+    }
 }
