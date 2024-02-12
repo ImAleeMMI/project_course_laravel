@@ -37,7 +37,5 @@ class UserController extends Controller
         return redirect()->route('user.show')->with('success', 'Il tuo profilo è stato cancellato con successo!');
     }
 
-    public function index(){
-        return view('index');
-    }
+    
 }

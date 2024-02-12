@@ -16,7 +16,7 @@
                         <div>
                             <h1>Benvenuto {{ Auth::user()->name }}</h1>
                             <a href="{{ route('user.show') }}" class="btn btn-primary">Visualizza Profilo</a>
-                            <a href="{{ ('/') }}" class="btn btn-info">Homepage</a>
+                            <a href="{{ '/' }}" class="btn btn-info">Homepage</a>
                         </div>
 
                     </div>

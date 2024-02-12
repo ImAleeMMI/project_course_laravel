@@ -8,8 +8,14 @@
 </head>
 <body>
     <div>
-        <h1>Ciao </h1>
-        <p>Questa è un test email!</p>
+        
+        <div class="card">
+            <h3>Contact Us detail:</h3>
+            <h5>Nome: {{ $name }}</h5> 
+            <p>Email: {{ $email }}</p>
+            <p>Subject: {{ $sub }}</p>
+            <p>Message: {{ $mess }}</p>
+        </div>
     </div>
 </body>
 </html>

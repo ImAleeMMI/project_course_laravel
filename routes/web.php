@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\SiteCourse;
 use App\Http\Controllers\UserController;
 use App\Jobs\ContactUs;
 use App\Models\User;
@@ -22,13 +25,19 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Rotte sito corsi
+Route::get('/', [SiteCourse::class, 'homepage'])->name('pages.homepage');
+Route::get('/about', [SiteCourse::class, 'about'])->name('pages.about');
+
+Route::get('/course-detail', [SiteCourse::class, 'courseDetail'])->name('pages.detail');
+Route::get('/our-features', [SiteCourse::class, 'ourFeatures'])->name('pages.features');
+Route::get('/istructors', [SiteCourse::class, 'istructors'])->name('pages.istructors');
+Route::get('/testimonial', [SiteCourse::class, 'testimonial'])->name('pages.testimonial');
+Route::get('/contact', [SiteCourse::class, 'contact'])->name('pages.contact');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
     //Rotte profilo utente
@@ -59,4 +68,9 @@ Route::middleware(['auth'])->group(function () {
     })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 });
 
-Route::post ('/send-mail',[MailController::class,'maildata'])->name('send_mail');
+Route::post('/send-mail', [MailController::class, 'mailData'])->name('send_mail');
+
+
+//Rotte per il controller dei corsi
+Route::get('/course', [CourseController::class, 'course'])->name('pages.course');
+
